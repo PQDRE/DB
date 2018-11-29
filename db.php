@@ -23,6 +23,11 @@ class Db
 			}
 			return $res;
 		}
+		public function last_id($query){
+			$res = $this->$dbh->prepare($query);
+			$res->execute();
+			return $this->$dbh->lastInsertId();
+		}
 		
 		
 
