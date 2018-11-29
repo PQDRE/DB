@@ -11,12 +11,13 @@ class Db
 		
 	}
 
-		public  function insert_data($data) {
+		public  function insert($data) {
 			$res = $this->$dbh->prepare($data);
 			$res = $res->execute();
 		}
-		public  function get_data($table){
-			$result = $this->$dbh->query($table);
+		public  function query($table){
+			$result = $this->$dbh->prepare($table);
+			$result2 = $result->execute();
 			$res = $result->fetchAll(PDO::FETCH_ASSOC);
 			if($res === false){
 				return [];
